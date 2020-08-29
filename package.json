@@ -1,0 +1,15 @@
+{
+  "name": "bus-stop-discord-bot",
+  "version": "0.2.5",
+  "description": "Discord bot for Bus Stop Toy Shop role play server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rory",
+  "license": "ISC",
+  "dependencies": {
+    "discord-welcome": "^1.5.0",
+    "discord.js": "^12.0.2"
+  }
+}
