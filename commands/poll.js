@@ -4,8 +4,9 @@ module.exports = {
 	name: `poll`,
 	description: `The bit that makes polls`,
 	usage: `${prefix}poll`,
-	execute(message, args) {
+	execute(message) {
 
+		const args = message.content.toLocaleLowerCase().split(/ +/);
 		if (!args[0]) return;
 
 		message.delete();

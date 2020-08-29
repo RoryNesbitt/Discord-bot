@@ -1,10 +1,10 @@
 const Discord = require(`discord.js`);
 const config = require(`./config.json`);
-const prefix = config.prefix;
+const token = require(`./token.json`);
 const fs = require(`fs`);
 
 const client = new Discord.Client();
-client.login(config.token);
+client.login(token.token);
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith(`.js`));
@@ -35,11 +35,21 @@ client.on(`message`, message => {
 
      if (message.author.bot) return;
 
-     var msg = message.content.toLocaleLowerCase()
+     let prefix;
+     let roleChannel;
 
-     console.log(msg);
+     const id = message.guild.id;
+     config.servers.forEach(server => {
+          if (server.id == id){
+               prefix = server.prefix;
+               roleChannel = server.roleChannel;
+          }
+          
+     });
 
-     if (message.channel == config.roleChannel) {
+     var msg = message.content.toLocaleLowerCase() 
+
+     if (message.channel == roleChannel) {
           if (!msg.startsWith(`${prefix}add`) && !(msg.startsWith(`${prefix}delete`) && message.member.hasPermission(`MANAGE_MESSAGES`))) {
                message.react(`❌`)
                message.channel.send(`this channel is just for using the ${prefix}add command`)
@@ -73,14 +83,6 @@ client.on(`message`, message => {
      const args = msg.split(/ +/);
      const command = args.shift();
      console.log(msg);
-
-     switch (command) {    //hard coded commands with prefix //again an if could work but ease of expanding
-          case `tuesday`:
-          case `wednesday`:
-               message.reply(`Since we have been gradually expanding my brain has been rewired, use ${prefix}add over 18 or ${prefix}add under 18 to get your role`);
-               return;
-
-     }
 
      if (!client.commands.has(command)) {                   //if it`s not in the generated array then it might be a dice roll like !1d20 or !69d420
           client.commands.get(`roll`).execute(message);     //so let the roll command deal with it

@@ -4,8 +4,7 @@ module.exports = {
 	name: `help`,
 	description: `The bit that doesn't help`,
 	usage: `${prefix}help`,
-	execute(message
-		) {
+	execute(message) {
 		message.channel.send(`I need help too`);
 	},
 };

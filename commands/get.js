@@ -11,10 +11,9 @@ module.exports = {
 	name: `get`,
 	description: `The bit that does help`,
      usage: `${prefix}get <topic/command>`,
-	execute(message, args) {
+	execute(message) {
 
-          
-
+		const args = message.content.toLocaleLowerCase().split(/ +/);
 		switch(args[0]){
                case `commands`:
                     switch(args[1]){

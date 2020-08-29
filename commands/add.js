@@ -1,30 +1,41 @@
 const config = require(`../config.json`);
-const prefix = config.prefix;
+const prefix = config.defaultPrefix;
 module.exports = {
-	name: `add`,
+     name: `add`,
      description: `The bit that adds players to a game`,
      usage: `${prefix}add <game name>`,
-	execute(message, args) {
-          if (message.channel != config.roleChannel) {
+     execute(message) {
+
+          let roleChannel;
+          const id = message.guild.id;
+          config.servers.forEach(server => {
+               if (server.id == id) {
+                    roleChannel = server.roleChannel;
+               }
+
+          });
+          if (message.channel != roleChannel) {
                message.react(`❌`);
-               message.reply(`Please use <#${config.roleChannel}> to keep this channel tidy`)
-               .then(msg => {
-                    tOut = 3000;
-                    message.delete({ timeout: tOut})
-                    msg.delete({ timeout: tOut })
-               })
-               .catch(console.error);
+               message.reply(`Please use <#${roleChannel}> to keep this channel tidy`)
+                    .then(msg => {
+                         tOut = 3000;
+                         message.delete({ timeout: tOut })
+                         msg.delete({ timeout: tOut })
+                    })
+                    .catch(console.error);
                return;
           }
-          var role = args[0];
-          switch(role){
+
+          
+		const role = message.content.toLocaleLowerCase().split(/ +/)[1];
+          switch (role) {
                case `over`:
                case `overs`:
                case `over18`:
                     if (!message.member.roles.cache.has(`691655875697442850`)) {
                          message.member.roles.add(`689571794847400022`);
-                         message.reply(`Added to overs`);   
-                    }else {
+                         message.reply(`Added to overs`);
+                    } else {
                          message.react(`❌`);
                          message.reply(`You are already part of unders, contact a mod if this needs changed`);
                     }
@@ -35,7 +46,7 @@ module.exports = {
                     if (!message.member.roles.cache.has(`689571794847400022`)) {
                          message.member.roles.add(`691655875697442850`);
                          message.reply(`Added to unders`);
-                    }else {
+                    } else {
                          message.react(`❌`);
                          message.reply(`You are already part of overs, contact a mod if this needs changed`);
                     }
@@ -63,8 +74,8 @@ module.exports = {
                     guildMember.roles.add(`691684524492324895`);
                     message.reply(`Added to Narps Two`);
                     break;
-                    case `shenanigan`:
-                    case `shenanigans`:
+               case `shenanigan`:
+               case `shenanigans`:
                     guildMember = message.member;
                     guildMember.roles.add(`691685497768247336`);
                     message.reply(`Added to Shenanigan Squad`);
@@ -79,5 +90,5 @@ module.exports = {
                     message.channel.send(`Add yourself to a game by sending ${prefix}add <game name>`);
                     break;
           }
-	},
+     },
 };
