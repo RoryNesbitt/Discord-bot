@@ -1,5 +1,5 @@
 const fs = require('fs');
-const config = require("../config.json");
+const config = require("../config/config.json");
 const prefix = config.prefix;
 module.exports = {
     name: `prefix`,
