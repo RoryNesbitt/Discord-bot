@@ -25,6 +25,10 @@ client.on(`ready`, () => {
      fs.access('./config/config.json', fs.constants.R_OK | fs.constants.W_OK, (err) => {
           if (err) {
                console.log(`No Config`)
+               fs.writeFile(`config/config.json`, JSON.stringify(config), function (err) {
+                    if (err) throw err;
+                    console.log(`Copied default config`)
+               });
           } else {
                console.log(`config exists`)
           }
