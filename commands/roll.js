@@ -6,17 +6,12 @@ module.exports = {
     description: `The bit that rolls the dice`,
     usage: `(${prefix})roll <quantity> d <value> ± <modifier> & <repeat>  -- Most values are optional`,
     execute(message) {
-<<<<<<< HEAD
-        const config = require(`../config/config.json`);
-        const prefix = config.prefix;
-=======
         const config = require(`../config.json`);
         const id = message.guild.id;
         let prefix;
         config.servers.forEach(server => {
             if (server.id == id) prefix = server.prefix;
         });
->>>>>>> edb074cc6bdc0e68f3ab5e70555e3c50e8da6fba
         const re = /((\d*)d(\d*)(\-|\+?)(\d*))x?(\d*)c?(\d*)?/
         var command = message.content.toLocaleLowerCase();
         command = command.replace(/\s/g, ``);
