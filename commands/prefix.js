@@ -1,5 +1,5 @@
 const fs = require('fs');
-const config = require("../servers.json");
+const config = require("../config.json");
 const prefix = config.prefix;
 module.exports = {
     name: `prefix`,
@@ -16,7 +16,7 @@ module.exports = {
             }
         });
 
-        fs.writeFile('servers.json', JSON.stringify(config), function (err) {
+        fs.writeFile('config.json', JSON.stringify(config), function (err) {
             if (err) throw err;
             message.channel.send('Set Prefix');
           });

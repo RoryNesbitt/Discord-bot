@@ -1,6 +1,6 @@
 const Discord = require(`discord.js`);
-const config = require(`./servers.json`);
-const token = require(`./config.json`);
+const config = require(`./config.json`);
+const token = require(`./token.json`);
 const fs = require(`fs`);
 
 const client = new Discord.Client();
@@ -35,8 +35,8 @@ client.on(`message`, message => {
 
      if (message.author.bot) return;
 
-     delete require.cache[require.resolve("./servers.json")];
-     const config = require("./servers.json");
+     delete require.cache[require.resolve("./config.json")];
+     const config = require("./config.json");
      let prefix;
      let roleChannel;
 
