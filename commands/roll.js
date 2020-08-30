@@ -7,7 +7,11 @@ module.exports = {
     usage: `(${prefix})roll <quantity> d <value> ± <modifier> & <repeat>  -- Most values are optional`,
     execute(message) {
         const config = require(`../config.json`);
-        const prefix = config.prefix;
+        const id = message.guild.id;
+        let prefix;
+        config.servers.forEach(server => {
+            if (server.id == id) prefix = server.prefix;
+        });
         const re = /((\d*)d(\d*)(\-|\+?)(\d*))x?(\d*)c?(\d*)?/
         var command = message.content.toLocaleLowerCase();
         command = command.replace(/\s/g, ``);
@@ -93,7 +97,7 @@ module.exports = {
         if (!failed) {
             if (iteration % 25 == 0) {
                 diceEmbed.setTitle(`Doing some math`)
-                .setThumbnail(`https://www.insidejapantours.com/blog/wp-content/uploads/2011/03/abacus.png`)
+                    .setThumbnail(`https://www.insidejapantours.com/blog/wp-content/uploads/2011/03/abacus.png`)
             }
             if (count) {
                 diceEmbed.addField(`Number of results ${count} or more`, `${cTotal}`)
