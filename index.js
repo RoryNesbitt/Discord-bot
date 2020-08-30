@@ -1,5 +1,4 @@
 const Discord = require(`discord.js`);
-const config = require(`./config/config.json`);
 const token = require(`./token.json`);
 const fs = require(`fs`);
 
@@ -22,6 +21,14 @@ client.on(`ready`, () => {
      client.user.setActivity(`!Help !1d20`, { type: `WATCHING` })
           .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
           .catch(console.error);
+
+     fs.access('./config/config.json', fs.constants.R_OK | fs.constants.W_OK, (err) => {
+          if (err) {
+               console.log(`No Config`)
+          } else {
+               console.log(`config exists`)
+          }
+     });
 
 })
 
