@@ -30,6 +30,32 @@ client.on(`ready`, () => {
      defaultChannel.send(`Please join a game from the #role-allocation channel);
 });*/
 
+client.on(`channelCreate`, channel => {
+     channel.send("New channel who dis?");
+})
+
+client.on("guildCreate", guild => {
+     let config = require("./config.json");
+     const id = guild.id;
+     let done = false;
+     config.servers.forEach(server => {
+          if (server.id == id) {
+               done = true;
+          }
+     });
+     if (done) return;
+     console.log(`Adding server ${id}`)
+     let servers = config.servers;
+     let newServer = new Object;
+     newServer.id = id;
+     newServer.prefix = config.defaultPrefix;
+     servers.push(newServer);
+     config.servers = servers;
+     fs.writeFile(`config.json`, JSON.stringify(config), function (err) {
+          if (err) throw err;
+     });
+});
+
 client.on(`message`, message => {
 
      if (message.author.bot) return;
@@ -37,31 +63,14 @@ client.on(`message`, message => {
      let config = require("./config.json");
      let prefix;
      let roleChannel;
-     let newServerWhoDis = true;
 
      const id = message.guild.id;
      config.servers.forEach(server => {
           if (server.id == id) {
                prefix = server.prefix;
                roleChannel = server.roleChannel;
-               newServerWhoDis = false;
           }
      });
-
-     if (newServerWhoDis) {
-          console.log(`Adding server ${id}`)
-          let servers = config.servers;
-          let newServer = new Object;
-          newServer.id = id;
-          newServer.prefix = config.defaultPrefix;
-          servers.push(newServer);
-          config.servers = servers;
-          fs.writeFile(`config.json`, JSON.stringify(config), function (err) {
-               if (err) throw err;
-          });
-          delete require.cache[require.resolve("./config.json")];
-          config = require("./config.json");
-     }
 
      var msg = message.content.toLocaleLowerCase()
 
