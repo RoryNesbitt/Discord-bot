@@ -1,6 +1,6 @@
 const package = require(`../package.json`);
 const version = package.version;
-const config = require(`../config.json`);
+const config = require(`../servers.json`);
 const prefix = config.prefix;
 const fs = require(`fs`);
 const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith(`.js`));

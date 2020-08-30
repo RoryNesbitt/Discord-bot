@@ -1,6 +1,6 @@
 const Discord = require(`discord.js`);
-const config = require(`./config.json`);
-const token = require(`./token.json`);
+const config = require(`./servers.json`);
+const token = require(`./config.json`);
 const fs = require(`fs`);
 
 const client = new Discord.Client();
@@ -35,19 +35,21 @@ client.on(`message`, message => {
 
      if (message.author.bot) return;
 
+     delete require.cache[require.resolve("./servers.json")];
+     const config = require("./servers.json");
      let prefix;
      let roleChannel;
 
      const id = message.guild.id;
      config.servers.forEach(server => {
-          if (server.id == id){
+          if (server.id == id) {
                prefix = server.prefix;
                roleChannel = server.roleChannel;
           }
-          
+
      });
 
-     var msg = message.content.toLocaleLowerCase() 
+     var msg = message.content.toLocaleLowerCase()
 
      if (message.channel == roleChannel) {
           if (!msg.startsWith(`${prefix}add`) && !(msg.startsWith(`${prefix}delete`) && message.member.hasPermission(`MANAGE_MESSAGES`))) {

@@ -1,15 +1,3 @@
 {
-    "defaultPrefix":"!",
-    "servers": [
-        {
-            "id": "709166827254841538",
-            "prefix": "!",
-            "roleChannel": "737261654835724308"
-        },
-        {
-            "id": "689569549829668870",
-            "prefix": "!",
-            "roleChannel": "719965834239410227"
-        }
-    ]
+    "token": "NjkxOTkzMjI2NjA5MTY0Mjk5.XvjMLg.D0h5IXJ1WZBcLIZd_J1b7DKG98o"
 }

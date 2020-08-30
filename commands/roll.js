@@ -1,12 +1,12 @@
 const Discord = require(`discord.js`);
-const config = require(`../config.json`);
+const config = require(`../servers.json`);
 const prefix = config.prefix;
 module.exports = {
     name: `roll`,
     description: `The bit that rolls the dice`,
     usage: `(${prefix})roll <quantity> d <value> ± <modifier> & <repeat>  -- Most values are optional`,
     execute(message) {
-        const config = require(`../config.json`);
+        const config = require(`../servers.json`);
         const prefix = config.prefix;
         const re = /((\d*)d(\d*)(\-|\+?)(\d*))x?(\d*)c?(\d*)?/
         var command = message.content.toLocaleLowerCase();

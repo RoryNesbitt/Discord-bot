@@ -1,4 +1,4 @@
-const config = require(`../config.json`);
+const config = require(`../servers.json`);
 const prefix = config.prefix;
 module.exports = {
 	name: `delete`,
