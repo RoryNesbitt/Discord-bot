@@ -1,11 +1,9 @@
-const Discord = require(`discord.js`);
-const config = require(`../config/config.json`);
-const prefix = config.prefix;
 module.exports = {
     name: `roll`,
     description: `The bit that rolls the dice`,
-    usage: `(${prefix})roll <quantity> d <value> ± <modifier> & <repeat>  -- Most values are optional`,
+    usage: `roll <quantity> d <value> ± <modifier> & <repeat>  -- Most values are optional`,
     execute(message) {
+        const Discord = require(`discord.js`);
         const config = require(`../config.json`);
         const id = message.guild.id;
         let prefix;

@@ -1,9 +1,7 @@
-const config = require(`../config/config.json`);
-const prefix = config.prefix;
 module.exports = {
 	name: `delete`,
 	description: `The bit that removes stuff`,
-	usage: `${prefix}delete <number> Default:1`,
+	usage: `delete <number> Default:1`,
 	execute(message) {
 		const args = message.content.toLocaleLowerCase().split(/ +/);
 

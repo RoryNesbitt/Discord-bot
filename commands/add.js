@@ -1,9 +1,7 @@
-const config = require(`../config/config.json`);
-const prefix = config.defaultPrefix;
 module.exports = {
      name: `add`,
      description: `The bit that adds players to a game`,
-     usage: `${prefix}add <game name>`,
+     usage: `add <game name>`,
      execute(message) {
 
           let roleChannel;
@@ -12,7 +10,6 @@ module.exports = {
                if (server.id == id) {
                     roleChannel = server.roleChannel;
                }
-
           });
           if (message.channel != roleChannel && roleChannel != null) {
                message.react(`❌`);

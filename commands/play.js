@@ -1,6 +1,3 @@
-const Discord = require(`discord.js`);
-const config = require(`../config/config.json`);
-const prefix = config.prefix;
 module.exports = {
     name: `play`,
     description: `The bit that corrects you`,

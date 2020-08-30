@@ -1,11 +1,9 @@
-const fs = require(`fs`);
-const config = require(`../config.json`);
-const prefix = config.prefix;
 module.exports = {
     name: `set`,
     description: `The bit that sets things in the config`,
-    usage: `${prefix}prefix <new prefix>`,
+    usage: `set <variable> <new value>`,
     execute(message) {
+        const fs = require(`fs`);
 
         let updated = false;
         const args = message.content.toLocaleLowerCase().split(/ +/)

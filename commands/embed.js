@@ -1,12 +1,10 @@
-const Discord = require(`discord.js`);
-const config = require(`../config/config.json`);
-const prefix = config.prefix;
 module.exports = {
 	name: `embed`,
 	description: `The bit that doesn't work`,
-	usage: `${prefix}embed`,
+	usage: `embed`,
 	execute(message) {
-
+		const Discord = require(`discord.js`);
+		
 		// inside a command, event listener, etc.
 		const exampleEmbed = new Discord.MessageEmbed()
 			.setColor('#0099ff')

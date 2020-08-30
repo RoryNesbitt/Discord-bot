@@ -2,6 +2,20 @@ const Discord = require(`discord.js`);
 const token = require(`./token.json`);
 const fs = require(`fs`);
 
+
+fs.access('./config/config.json', fs.constants.R_OK | fs.constants.W_OK, (err) => {
+     if (err) {
+          console.log(`No Config`)
+          const dConfig = require(`./default.json`);
+          fs.writeFile(`config/config.json`, JSON.stringify(dConfig), function (err) {
+               if (err) throw err;
+               console.log(`Copied default config`)
+          });
+     } else {
+          console.log(`config exists`)
+     }
+});
+
 const client = new Discord.Client();
 client.login(token.token);
 client.commands = new Discord.Collection();
@@ -21,18 +35,6 @@ client.on(`ready`, () => {
      client.user.setActivity(`!Help !1d20`, { type: `WATCHING` })
           .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
           .catch(console.error);
-
-     fs.access('./config/config.json', fs.constants.R_OK | fs.constants.W_OK, (err) => {
-          if (err) {
-               console.log(`No Config`)
-               fs.writeFile(`config/config.json`, JSON.stringify(config), function (err) {
-                    if (err) throw err;
-                    console.log(`Copied default config`)
-               });
-          } else {
-               console.log(`config exists`)
-          }
-     });
 
 })
 
