@@ -14,7 +14,7 @@ module.exports = {
                }
 
           });
-          if (message.channel != roleChannel) {
+          if (message.channel != roleChannel && roleChannel != null) {
                message.react(`❌`);
                message.reply(`Please use <#${roleChannel}> to keep this channel tidy`)
                     .then(msg => {
