@@ -17,13 +17,7 @@ fs.access('./config/config.json', fs.constants.R_OK | fs.constants.W_OK, (err) =
 });
 
 const client = new Discord.Client();
-try {
-     client.login(`$TOKEN_VAL`)
-} catch (err) {
-     console.log(err)
-     client.login(token.token);
-}
-
+client.login(token.token);
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith(`.js`));
