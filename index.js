@@ -46,7 +46,7 @@ client.on(`channelCreate`, channel => {
 })
 
 client.on("guildCreate", guild => {
-     let config = require("./config.json");
+     let config = require("./config/config.json");
      const id = guild.id;
      let done = false;
      config.servers.forEach(server => {
