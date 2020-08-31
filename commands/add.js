@@ -4,6 +4,7 @@ module.exports = {
      usage: `add <game name>`,
      execute(message) {
 
+          const config = require(`/config/config.json`)
           let roleChannel;
           const id = message.guild.id;
           config.servers.forEach(server => {
