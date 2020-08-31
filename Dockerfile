@@ -2,9 +2,11 @@ FROM node:14.9
 
 ENV TOKEN_VAL="string"
 
-COPY . /bot
-
 WORKDIR /bot
+
+COPY package*.json ./
 
 RUN npm i
 
+COPY . .
+ CMD [ "node", "." ]
