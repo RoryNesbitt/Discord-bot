@@ -14,7 +14,6 @@ fs.access('./config/config.json', fs.constants.R_OK | fs.constants.W_OK, (err) =
 });
 
 const client = new Discord.Client();
-console.log(process.env.TOKEN_VAL);
 client.login(process.env.TOKEN_VAL);
 client.commands = new Discord.Collection();
 
