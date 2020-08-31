@@ -1,5 +1,4 @@
 const Discord = require(`discord.js`);
-const token = require(`./token.json`);
 const fs = require(`fs`);
 
 
@@ -15,7 +14,8 @@ fs.access('./config/config.json', fs.constants.R_OK | fs.constants.W_OK, (err) =
 });
 
 const client = new Discord.Client();
-client.login(token.token);
+console.log(process.env.TOKEN_VAL);
+client.login(process.env.TOKEN_VAL);
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith(`.js`));
