@@ -4,7 +4,7 @@ module.exports = {
     usage: `roll <quantity> d <value> ± <modifier> & <repeat>  -- Most values are optional`,
     execute(message) {
         const Discord = require(`discord.js`);
-        const config = require(`../config.json`);
+        const config = require(`../config/config.json`);
         const id = message.guild.id;
         let prefix;
         config.servers.forEach(server => {
