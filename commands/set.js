@@ -6,6 +6,7 @@ module.exports = {
         const fs = require(`fs`);
 
         let updated = false;
+        const config = require(`../config/config.json`)
         const args = message.content.toLocaleLowerCase().split(/ +/)
         const cfg = args[1];
         const id = message.guild.id;
