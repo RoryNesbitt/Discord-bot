@@ -1,6 +1,6 @@
 {
   "name": "TheOverseer",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "Discord bot for Bus Stop Toy Shop role play server",
   "main": "index.js",
   "scripts": {
