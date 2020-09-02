@@ -41,7 +41,7 @@ module.exports = {
 
         if (updated) {
             fs.writeFile(`config/config.json`, JSON.stringify(config), function (err) {
-                if (err) throw err;
+                if (err) console.log(err);
                 message.channel.send(`Updated ${cfg}`);
             });
         }

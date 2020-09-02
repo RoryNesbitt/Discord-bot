@@ -63,7 +63,7 @@ client.on("guildCreate", guild => {
      servers.push(newServer);
      config.servers = servers;
      fs.writeFile(`config/config.json`, JSON.stringify(config), function (err) {
-          if (err) throw err;
+          if (err) console.log(err);
      });
 });
 
