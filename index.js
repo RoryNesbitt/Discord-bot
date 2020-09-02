@@ -7,7 +7,7 @@ fs.access('./config/config.json', fs.constants.R_OK | fs.constants.W_OK, (err) =
           console.log(`No Config`)
           const dConfig = require(`./default.json`);
           fs.writeFile(`config/config.json`, JSON.stringify(dConfig), function (err) {
-               if (err) throw err;
+               if (err) console.log(err);
                console.log(`Copied default config`)
           });
      }

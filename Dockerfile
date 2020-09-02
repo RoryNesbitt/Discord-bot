@@ -6,7 +6,5 @@ WORKDIR /bot
 
 COPY package*.json ./
 
-RUN npm i
-
 COPY . .
- CMD [ "node", "." ]
+ CMD [ "node", ".", "--trace-warnings" ]
