@@ -16,7 +16,7 @@ module.exports = {
                message.react(`❌`);
                message.reply(`Please use <#${roleChannel}> to keep this channel tidy`)
                     .then(msg => {
-                         tOut = 3000;
+                         tOut = 5000;
                          message.delete({ timeout: tOut })
                          msg.delete({ timeout: tOut })
                     })

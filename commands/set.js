@@ -8,7 +8,7 @@ module.exports = {
             console.log("Permission denied: set")
             message.reply(`Only an admin can use this command.`)
                     .then(msg => {
-                         tOut = 3000;
+                         tOut = 5000;
                          message.delete({ timeout: tOut })
                          msg.delete({ timeout: tOut })
                     })
