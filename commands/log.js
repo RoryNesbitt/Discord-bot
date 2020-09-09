@@ -8,6 +8,14 @@ module.exports = {
             console.log(message)
 		} else {
 			message.react(`❌`);
+			console.log("Permission denied: log")
+            message.reply(`Only an Admin can use this command.`)
+                    .then(msg => {
+                         tOut = 3000;
+                         message.delete({ timeout: tOut })
+                         msg.delete({ timeout: tOut })
+                    })
+                    .catch(console.error);
 		}
 	},
 };

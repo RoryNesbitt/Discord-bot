@@ -5,7 +5,7 @@ module.exports = {
     execute(message) {
         command = message.content.slice(prefix.length)
         user = `<@234395307759108106>`
-        message.channel.send(`If you are trying to use ${user} the command is \`-${command}\``);
         message.react(`❌`);
+        message.channel.send(`If you are trying to use ${user} the command is \`-${command}\``);
     },
 };

@@ -3,6 +3,18 @@ module.exports = {
     description: `The bit that sets things in the config`,
     usage: `set <variable> <new value>`,
     execute(message) {
+        if (!message.member.hasPermission(`ADMINISTRATOR`)) {
+            message.react(`❌`);
+            console.log("Permission denied: set")
+            message.reply(`Only an admin can use this command.`)
+                    .then(msg => {
+                         tOut = 3000;
+                         message.delete({ timeout: tOut })
+                         msg.delete({ timeout: tOut })
+                    })
+                    .catch(console.error);
+            return;
+		}
         const fs = require(`fs`);
 
         let updated = false;

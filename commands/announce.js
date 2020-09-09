@@ -14,6 +14,14 @@ module.exports = {
 			message.channel.send(message.content.slice(prefix.length + 8));
 		} else {
 			message.react(`❌`);
+			console.log("Permission denied: announce")
+            message.reply(`Only an mod can use this command.`)
+                    .then(msg => {
+                         tOut = 3000;
+                         message.delete({ timeout: tOut })
+                         msg.delete({ timeout: tOut })
+                    })
+                    .catch(console.error);
 		}
 	},
 };

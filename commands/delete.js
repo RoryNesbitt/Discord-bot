@@ -12,6 +12,14 @@ module.exports = {
 			message.channel.bulkDelete(num + 1);
 		} else {
 			message.react(`❌`);
+			console.log("Permission denied: delete")
+            message.reply(`Only a mod can use this command.`)
+                    .then(msg => {
+                         tOut = 3000;
+                         message.delete({ timeout: tOut })
+                         msg.delete({ timeout: tOut })
+                    })
+                    .catch(console.error);
 		}
 
 	},
