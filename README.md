@@ -11,11 +11,11 @@ docker run --name="discord-bot" -e TOKEN_VAL="TOKENIDFORYOURBOT" -v volume-name:
 ```
 
 #### Download to a Pi
-A Raspberry Pi, as I usually run this on, will not run the docker image as is. Instead it is required to manually create the image from this source code. To do so run this code, then you can remove the git directory and use the local image to run the container.
+A Raspberry Pi, as I usually run this on, will not run the docker image as is. Instead it is required to manually create the image from this source code. To do so run the following code. after doing so, you can use the local image by running one of the prior commands with `discord-bot` as the image name, ommitting the `roryisnotacabbage/`.
 ```
 git clone https://github.com/RoryNesbitt/Discord-bot.git
-cd Discord-bot
-docker build -t discord-bot .#
+docker build -t discord-bot ./Discord-bot
+rm -rf Discord-bot
 ```
 ### First run
 On the first run the bot will copy over the default config which contains an example server setup. Then when being added to a new server it will add that server with the default prefix "!" to the config
