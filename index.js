@@ -100,8 +100,7 @@ client.on(`message`, message => {
           }
      }
 
-     switch (msg) {        //hard coded commands not using the prefix //theres only one but it`s switch for ease of expanding
-          case `hello there`:
+     if (msg.startsWith("hello there")) {
                console.log(msg);
                message.channel.send(`General Kenobi`);
                return;
