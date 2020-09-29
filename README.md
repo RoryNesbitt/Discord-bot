@@ -21,8 +21,9 @@ rm -rf Discord-bot
 On the first run the bot will copy over the default config which contains an example server setup. Then when being added to a new server it will add that server with the default prefix "!" to the config
 
 ### Running without docker
-To run the code locally it requires a minor change to (index.js)[index.js].  
-`process.env.TOKEN_VAL` on line 17 needs to be replaced by your bot's token sourounded by quotes. Now the code can be run with:
+To run the code locally it requires a minor change to [index.js](index.js).
+`process.env.TOKEN_VAL` on line 17 needs to be replaced by your bot's token sourounded by quotes. 
+Now add a `./config` directory and the code can be run with:
 ```
 npm i
 node .
