@@ -17,10 +17,10 @@ module.exports = {
 
           switch (id) {
                case `709166827254841538`: //DFZ
-                    message.channel.send("Gonnie naw!")
+                    message.reply("Gonnie naw!")
                     break;
                case `718251835969896448`: //OK
-                    message.channel.send("Gonnie naw!")
+                    message.reply("Here you, you wank!")
                     break;
           }
      },
