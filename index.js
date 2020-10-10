@@ -106,6 +106,10 @@ client.on(`message`, message => {
                return;
      }
 
+     if (message.mentions.everyone) {
+          client.commands.get(`everyone`).execute(message);
+     }
+
      if (msg.includes("<@!312299256776097792>")) {
           message.channel.send("https://tenor.com/view/no-wack-not-funny-hannibul-gif-5760013")
      }
