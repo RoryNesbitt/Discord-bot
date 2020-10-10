@@ -19,22 +19,9 @@ module.exports = {
           let reply;
           switch (id) {
                case `709166827254841538`: //DFZ
-                    num = 3;
-                    reply = Math.ceil(Math.random() * num);
-                    switch (reply) {
-                         case 1:
-                              message.reply(`gonnie naw!`);
-                              break;
-                         case 2:
-                              message.channel.send(`https://tenor.com/view/idiot-gordon-ramsay-fucking-donkey-gif-4653512`);
-                              break;
-                         case 3:
-                              message.reply("here you, you wank!");
-                              break;
-                    }
-                    break;
                case `718251835969896448`: //OK
-                    num = 3;
+                    num = 3;  //There must be a way to automate this
+                              //An array won't work because some are replies and some are channel.send
                     reply = Math.ceil(Math.random() * num);
                     switch (reply) {
                          case 1:

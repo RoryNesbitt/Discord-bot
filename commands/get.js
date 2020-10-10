@@ -20,15 +20,15 @@ module.exports = {
           var errorMsg = `Get info with ${prefix}get <topic/command>`;
 
           const args = message.content.toLocaleLowerCase().split(/ +/);
-          switch (args[0]) {
+          switch (args[1]) {
                case `commands`:
-                    switch (args[1]) {
+                    switch (args[2]) {
                          case `mod`:
                          case `mods`:
                               message.channel.send(`These are the Mod commands I respond to: \n ${prefix}delete <number> default: 1 \n ${prefix}announce <what you want me to say>`);
                               break;
                          default:
-                              message.channel.send(`These are the commands I respond to: \n "roll d10 ± 3" / "${prefix}2d20±5 & 4d6" or any variation you wish \n ${prefix}add <game name> \n ${prefix}poll <Question for the poll> \n ${prefix}help \n ${prefix}get <topic> for details`);
+                              message.channel.send(`These are the commands I respond to: \n "roll d10 ± 3" / "${prefix}2d20±5 & 4d6" or any variation you wish \n ${prefix}add <role code> \n ${prefix}poll <Question for the poll> \n ${prefix}help \n ${prefix}get <topic> for details`);
                               break;
                     }
                     break;
@@ -52,7 +52,7 @@ module.exports = {
                     if (args[0]) {
                          buildList();
                          try {
-                              turnToEmbed(files[`${args[0]}.js`])
+                              turnToEmbed(files[`${args[1]}.js`])
                          } catch (error) {
                               console.log(`${message.content} didn't get`)
                               message.channel.send(errorMsg)
