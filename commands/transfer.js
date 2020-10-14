@@ -25,10 +25,12 @@ module.exports = {
                          msg.delete({ timeout: tOut })
                     })
                     .catch(console.error);
+                    return;
 		}
 
           member.roles.add(role).catch((e) => {
                message.reply(`Failed to add role`)
+               return;
           });
 
           if (member.roles.cache.has(role)) {
