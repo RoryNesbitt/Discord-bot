@@ -1,7 +1,7 @@
 module.exports = {
      name: `add`,
-     description: `The bit that adds players to a game`,
-     usage: `add <game name>`,
+     description: `The bit that adds players to a role`,
+     usage: `add <role>`,
      execute(message) {
 
           const config = require(`../config/config.json`)
@@ -89,7 +89,7 @@ module.exports = {
                               message.reply(`Enjoy your time at Free RPG Weekend`);
                               break;
                          default:
-                              message.channel.send(`Add yourself to a game by sending ${prefix}add <game name>`);
+                              message.channel.send(`Add a role by sending ${prefix}add <role code>`);
                               break;
                     }
                     break;
