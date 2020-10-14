@@ -3,7 +3,7 @@ module.exports = {
 	description: `The bit that announces`,
 	usage: `announce <What you want me to say>`,
 	execute(message) {
-		const config = require(`../config.json`);
+		const config = require(`../config/config.json`);
         const id = message.guild.id;
         let prefix;
         config.servers.forEach(server => {
