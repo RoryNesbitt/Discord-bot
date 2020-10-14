@@ -5,12 +5,10 @@ module.exports = {
      execute(message) {
 
           const config = require(`../config/config.json`)
-          let roleChannel;
           let prefix;
           const id = message.guild.id;
           config.servers.forEach(server => {
                if (server.id == id) {
-                    roleChannel = server.roleChannel;
                     prefix = server.prefix;
                }
           });
