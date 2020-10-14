@@ -1,7 +1,7 @@
 module.exports = {
      name: `transfer`,
      description: `The bit that transfers a role to someone new`,
-     usage: `give @<person> @<role>`,
+     usage: `give @<role> @<person>`,
      execute(message) {
 
           const config = require(`../config/config.json`)
