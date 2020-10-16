@@ -1,7 +1,7 @@
 module.exports = {
 	name: `poll`,
 	description: `The bit that makes polls`,
-	usage: `poll`,
+	usage: `poll <question to ask>`,
 	execute(message) {
 
 		const args = message.content.toLocaleLowerCase().split(/ +/);
