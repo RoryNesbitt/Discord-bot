@@ -3,7 +3,7 @@ module.exports = {
 	description: `The bit that makes polls`,
 	usage: `poll <question to ask>`,
 	execute(message) {
-		
+
 		const config = require(`../config/config.json`);
         const id = message.guild.id;
         let prefix;
@@ -11,7 +11,7 @@ module.exports = {
             if (server.id == id) prefix = server.prefix;
         });
 
-		msg = message.split(prefix.length() + 4);
+		msg = message.split(prefix.length + 4);
 		let args = msg.content.toLocaleLowerCase().split(/ +/);
 		if (!args[0]) return;
 
