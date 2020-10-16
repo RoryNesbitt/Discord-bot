@@ -4,7 +4,7 @@ module.exports = {
 	usage: `poll <question to ask>`,
 	execute(message) {
 
-		const args = message.content.toLocaleLowerCase().split(/ +/);
+		let args = message.content.toLocaleLowerCase().split(/ +/);
 		if (!args[0]) return;
 
 		message.delete();
