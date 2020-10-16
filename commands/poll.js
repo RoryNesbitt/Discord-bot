@@ -3,8 +3,16 @@ module.exports = {
 	description: `The bit that makes polls`,
 	usage: `poll <question to ask>`,
 	execute(message) {
+		
+		const config = require(`../config/config.json`);
+        const id = message.guild.id;
+        let prefix;
+        config.servers.forEach(server => {
+            if (server.id == id) prefix = server.prefix;
+        });
 
-		let args = message.content.toLocaleLowerCase().split(/ +/);
+		msg = message.split(prefix.length() + 4);
+		let args = msg.content.toLocaleLowerCase().split(/ +/);
 		if (!args[0]) return;
 
 		message.delete();
