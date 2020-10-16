@@ -11,8 +11,8 @@ module.exports = {
             if (server.id == id) prefix = server.prefix;
         });
 
-		msg = message.content.slice(prefix.length + 4);
-		let args = msg.content.toLocaleLowerCase().split(/ +/);
+		msg = message.content.toLocaleLowerCase().slice(prefix.length + 4);
+		let args = msg.split(/ +/);
 		if (!args[0]) return;
 
 		message.delete();
