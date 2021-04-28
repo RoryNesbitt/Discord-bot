@@ -3,8 +3,8 @@ This bot is set up to run the RPG server my local hobby shop set up at the start
 If you still wish to use it intructions follow.  
 
 ### Download
-To use this bot is made to be run in a docker container. It requires a mounted volume which will hold it's config file and the bot token which you wish to use.  
-Option one is to mount the volume as a discord volume, this is easiest as you don't have to worry about where the mount is.
+This bot is made to be run in a docker container. It requires a mounted volume which will hold it's config file and the bot token which you wish to use.  
+Option one is to mount the volume as a docker volume, this is easiest as you don't have to worry about where the mount is.
 ```
 docker volume create volume-name
 docker run --name="discord-bot" -e TOKEN_VAL="TOKENIDFORYOURBOT" -v volume-name:/bot/config roryisnotacabbage/discord-bot
