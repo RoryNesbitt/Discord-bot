@@ -3,7 +3,7 @@ module.exports = {
     description: `The bit that sets things in the config`,
     usage: `set <variable> <new value>`,
     execute(message) {
-        if (!message.member.hasPermission(`ADMINISTRATOR`) || message.author.id == 829091397486772235) {
+        if (!message.member.hasPermission(`ADMINISTRATOR`) && !message.author.id == 829091397486772235) {
             message.react(`❌`);
             console.log("Permission denied: set")
             message.reply(`Only an admin can use this command.`)
