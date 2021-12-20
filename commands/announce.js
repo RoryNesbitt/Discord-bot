@@ -9,12 +9,13 @@ module.exports = {
         config.servers.forEach(server => {
             if (server.id == id) prefix = server.prefix;
         });
-		if (message.member.hasPermission(`ADMINISTRATOR`) || message.member.roles.cache.has(`691665461586427944`)) {
+		if (message.member.hasPermission(`ADMINISTRATOR`) || message.author.id == 829091397486772235) {
 			message.delete();
 			message.channel.send(message.content.slice(prefix.length + 8));
 		} else {
 			message.react(`❌`);
 			console.log("Permission denied: announce")
+			console.log(message.author.id)
             message.reply(`Only an mod can use this command.`)
                     .then(msg => {
                          tOut = 5000;

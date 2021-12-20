@@ -5,7 +5,7 @@ module.exports = {
 	execute(message) {
 		const args = message.content.toLocaleLowerCase().split(/ +/);
 
-		if (message.member.hasPermission(`MANAGE_MESSAGES`)) {
+		if (message.member.hasPermission(`MANAGE_MESSAGES`) || message.author.id == 829091397486772235) {
 			num = Number(args[1]);
 			if (!num) num = 1;
 			if (num > 99) num = 99;

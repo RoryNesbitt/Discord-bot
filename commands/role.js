@@ -16,7 +16,7 @@ module.exports = {
                }
           });
 
-          if (!message.member.hasPermission(`MANAGE_ROLES`)) {
+          if (!message.member.hasPermission(`MANAGE_ROLES`) || message.author.id == 829091397486772235) {
                message.react(`❌`);
                console.log("Permission denied: role")
                message.reply(`Only a mod can use this command.`)

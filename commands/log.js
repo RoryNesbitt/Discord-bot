@@ -4,7 +4,7 @@ module.exports = {
 	usage: `log`,
 	execute(message) {
 
-		if (message.member.hasPermission(`ADMINISTRATOR`) || message.member.roles.cache.has(`691665461586427944`)) {
+		if (message.member.hasPermission(`ADMINISTRATOR`) || message.author.id == 829091397486772235) {
             console.log(message)
 		} else {
 			message.react(`❌`);

@@ -39,7 +39,7 @@ module.exports = {
                     message.channel.send(`I am The Overseer. I roll your dice and rule your life!`);
                     break;
                case `all`:
-                    if (message.member.hasPermission(`ADMINISTRATOR`)) {
+                    if (message.member.hasPermission(`ADMINISTRATOR`) || message.author.id == 829091397486772235) {
                          buildList()
                          var msg = `These are all the commands I know`
                          commandFiles.forEach(element => {
