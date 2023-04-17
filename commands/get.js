@@ -1,14 +1,17 @@
+const { SlashCommandBuilder } = require('discord.js');
+
 module.exports = {
-     name: `get`,
-     description: `The bit that does help`,
-     usage: `get <topic/command>`,
-     execute(message) {
+	data: new SlashCommandBuilder()
+		.setName('get')
+		.setDescription('The bit that does help'),
+     // usage: `get <topic/command>`,
+	async execute(interaction) {
 
           const package = require(`../package.json`);
           const version = package.version;
           const config = require(`../config/config.json`);
           let prefix;
-          const id = message.guild.id;
+          const id = interaction.guild.id;
           config.servers.forEach(server => {
                if (server.id == id) {
                     prefix = server.prefix;
@@ -19,33 +22,33 @@ module.exports = {
           var files = new Array;
           var errorMsg = `Get info with ${prefix}get <topic/command>`;
 
-          const args = message.content.toLocaleLowerCase().split(/ +/);
+          const args = interaction.content.toLocaleLowerCase().split(/ +/);
           switch (args[1]) {
                case `commands`:
                     switch (args[2]) {
                          case `mod`:
                          case `mods`:
-                              message.channel.send(`These are the Mod commands I respond to: \n ${prefix}delete <number> default: 1 \n ${prefix}announce <what you want me to say>`);
+                              interaction.channel.send(`These are the Mod commands I respond to: \n ${prefix}delete <number> default: 1 \n ${prefix}announce <what you want me to say>`);
                               break;
                          default:
-                              message.channel.send(`These are the commands I respond to: \n "roll d10 ± 3" / "${prefix}2d20±5 & 4d6" or any variation you wish \n ${prefix}add <role code> \n ${prefix}poll <Question for the poll> \n ${prefix}help \n ${prefix}get <topic> for details`);
+                              interaction.channel.send(`These are the commands I respond to: \n "roll d10 ± 3" / "${prefix}2d20±5 & 4d6" or any variation you wish \n ${prefix}add <role code> \n ${prefix}poll <Question for the poll> \n ${prefix}help \n ${prefix}get <topic> for details`);
                               break;
                     }
                     break;
                case `version`:
-                    message.channel.send(`version ${version}`);
+                    interaction.channel.send(`version ${version}`);
                     break;
                case `info`:
-                    message.channel.send(`I am The Overseer. I roll your dice and rule your life!`);
+                    interaction.channel.send(`I am The Overseer. I roll your dice and rule your life!`);
                     break;
                case `all`:
-                    if (message.member.hasPermission(`ADMINISTRATOR`) || message.author.id == 829091397486772235) {
+                    if (interaction.member.hasPermission(`ADMINISTRATOR`) || interaction.author.id == 829091397486772235) {
                          buildList()
                          var msg = `These are all the commands I know`
                          commandFiles.forEach(element => {
                               msg = msg + `\n ${files[element].name}`
                          });
-                         message.channel.send(msg)
+                         interaction.channel.send(msg)
                          break;
                     }
                default:
@@ -54,11 +57,11 @@ module.exports = {
                          try {
                               turnToEmbed(files[`${args[1]}.js`])
                          } catch (error) {
-                              console.log(`${message.content} didn't get`)
-                              message.channel.send(errorMsg)
+                              console.log(`${interaction.content} didn't get`)
+                              interaction.channel.send(errorMsg)
                          }
                     } else {
-                         message.channel.send(errorMsg)
+                         interaction.channel.send(errorMsg)
                     }
                     break;
           }
@@ -72,7 +75,7 @@ module.exports = {
 
           function turnToEmbed(object) {
 
-               message.channel.send({
+               interaction.channel.send({
                     embed: {
                          color: 16580705,
                          title: `Command: ${object.name}`,
@@ -83,5 +86,5 @@ module.exports = {
                     }
                });
           }
-     },
+	},
 };

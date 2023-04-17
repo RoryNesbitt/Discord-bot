@@ -1,22 +1,25 @@
-module.exports = {
-	name: `delete`,
-	description: `The bit that removes stuff`,
-	usage: `delete <number> Default:1`,
-	execute(message) {
-		const args = message.content.toLocaleLowerCase().split(/ +/);
+const { SlashCommandBuilder } = require('discord.js');
 
-		if (message.member.hasPermission(`MANAGE_MESSAGES`) || message.author.id == 829091397486772235) {
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('delete')
+		.setDescription('The bit that removes stuff'),
+	// usage: `delete <number> Default:1`,
+	async execute(interaction) {
+		const args = interaction.content.toLocaleLowerCase().split(/ +/);
+
+		if (interaction.member.hasPermission(`MANAGE_MESSAGES`) || interaction.author.id == 829091397486772235) {
 			num = Number(args[1]);
 			if (!num) num = 1;
 			if (num > 99) num = 99;
-			message.channel.bulkDelete(num + 1);
+			interaction.channel.bulkDelete(num + 1);
 		} else {
-			message.react(`❌`);
+			interaction.react(`❌`);
 			console.log("Permission denied: delete")
-            message.reply(`Only a mod can use this command.`)
+            interaction.reply(`Only a mod can use this command.`)
                     .then(msg => {
                          tOut = 5000;
-                         message.delete({ timeout: tOut })
+                         interaction.delete({ timeout: tOut })
                          msg.delete({ timeout: tOut })
                     })
                     .catch(console.error);

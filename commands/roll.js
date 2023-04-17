@@ -1,17 +1,20 @@
+const { SlashCommandBuilder } = require('discord.js');
+
 module.exports = {
-    name: `roll`,
-    description: `The bit that rolls the dice`,
-    usage: `roll <quantity> d <value> ± <modifier> & <repeat>  -- Most values are optional`,
-    execute(message) {
+	data: new SlashCommandBuilder()
+		.setName('roll')
+		.setDescription('The bit that rolls the dice'),
+    // usage: `roll <quantity> d <value> ± <modifier> & <repeat>  -- Most values are optional`,
+	async execute(interaction) {
         const Discord = require(`discord.js`);
         const config = require(`../config/config.json`);
-        const id = message.guild.id;
+        const id = interaction.guild.id;
         let prefix;
         config.servers.forEach(server => {
             if (server.id == id) prefix = server.prefix;
         });
         const re = /((\d*)d(\d*)(\-|\+?)(\d*))x?(\d*)c?(\d*)?/
-        var command = message.content.toLocaleLowerCase();
+        var command = interaction.content.toLocaleLowerCase();
         command = command.replace(/\s/g, ``);
         var failed = false;
         var iteration = 0;
@@ -89,7 +92,7 @@ module.exports = {
                 }
             });
         } catch (error) {
-            console.log(`${message.content} didn't dice`)
+            console.log(`${interaction.content} didn't dice`)
             failed = true;
         }
         if (!failed) {
@@ -111,13 +114,13 @@ module.exports = {
                 .setColor(3447003)
                 .setTitle(`Rolling your dice`)
                 .setURL(`https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Faa1a5178aef33568e9c4-a77ea51e8d8892c1eb8348eb6b3663f6.ssl.cf5.rackcdn.com%2Fp%2Ffull%2F1e2b8916-ed08-4198-9699-c4cdcf798a20.jpg&f=1&nofb=1`)
-                .setAuthor(`${message.author.username}`, message.author.avatarURL(), `https://discord.js.org`)
+                .setAuthor(`${interaction.author.username}`, interaction.author.avatarURL(), `https://discord.js.org`)
                 .setThumbnail(`https://cdn.pixabay.com/photo/2017/08/31/04/01/d20-2699387_960_720.png`)
 
         }
         function sendDice() {
             if (footer.length > 13 && footer.length < 2048) diceEmbed.setFooter(footer, ``);
-            message.channel.send(diceEmbed);
+            interaction.channel.send(diceEmbed);
         }
-    }
+	},
 };

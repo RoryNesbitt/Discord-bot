@@ -1,8 +1,10 @@
+const { SlashCommandBuilder } = require('discord.js');
+
 module.exports = {
-	name: `foo`,
-	description: `The bit that says bar`,
-	usage: `foo`,
-	execute(message) {
-		message.channel.send(`bar`);
+	data: new SlashCommandBuilder()
+		.setName('foo')
+		.setDescription('The bit that says bar'),
+	async execute(interaction) {
+		interaction.channel.send(`bar`);
 	},
 };

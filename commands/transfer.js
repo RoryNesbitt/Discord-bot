@@ -1,27 +1,30 @@
+const { SlashCommandBuilder } = require('discord.js');
+
 module.exports = {
-     name: `transfer`,
-     description: `The bit that transfers a role to someone new`,
-     usage: `give @<role> @<person>`,
-     execute(message) {
+	data: new SlashCommandBuilder()
+		.setName('transfer')
+		.setDescription('The bit that transfers a role to someone new'),
+     // usage: `give @<role> @<person>`,
+	async execute(interaction) {
 
           const config = require(`../config/config.json`)
           let prefix;
-          const id = message.guild.id;
+          const id = interaction.guild.id;
           config.servers.forEach(server => {
                if (server.id == id) {
                     prefix = server.prefix;
                }
           });
 
-          const member = message.mentions.members.first();
-          const role = message.content.split(/ +/)[1].slice(3, -1);
+          const member = interaction.mentions.members.first();
+          const role = interaction.content.split(/ +/)[1].slice(3, -1);
 
-          if (!message.member.roles.cache.has(role)) {
-               message.react(`❌`);
-               message.reply(`You do not have this role to give`)
+          if (!interaction.member.roles.cache.has(role)) {
+               interaction.react(`❌`);
+               interaction.reply(`You do not have this role to give`)
                     .then(msg => {
                          tOut = 5000;
-                         message.delete({ timeout: tOut })
+                         interaction.delete({ timeout: tOut })
                          msg.delete({ timeout: tOut })
                     })
                     .catch(console.error);
@@ -29,12 +32,12 @@ module.exports = {
           }
 
           member.roles.add(role).catch((e) => {
-               message.reply(`Failed to add role`)
+               interaction.reply(`Failed to add role`)
                return;
           });
 
-          message.react(`✔️`);
-          message.member.roles.remove(role);
+          interaction.react(`✔️`);
+          interaction.member.roles.remove(role);
 
-     },
+	},
 };

@@ -1,8 +1,11 @@
+const { SlashCommandBuilder } = require('discord.js');
+
 module.exports = {
-	name: `help`,
-	description: `The bit that doesn't help`,
-	usage: `help`,
-	execute(message) {
-		message.channel.send(`I need help too`);
+	data: new SlashCommandBuilder()
+		.setName('help')
+		.setDescription(`The bit that doesn't help`),
+	// usage: `help`,
+	async execute(interaction) {
+		interaction.channel.send(`I need help too`);
 	},
 };

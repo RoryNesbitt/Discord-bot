@@ -1,8 +1,11 @@
+const { SlashCommandBuilder } = require('discord.js');
+
 module.exports = {
-	name: `embed`,
-	description: `The bit that doesn't work`,
-	usage: `embed`,
-	execute(message) {
+	data: new SlashCommandBuilder()
+		.setName('embed')
+		.setDescription(`The bit that doesn't work`),
+	// usage: `embed`,
+	async execute(interaction) {
 		const Discord = require(`discord.js`);
 		
 		// inside a command, event listener, etc.
@@ -24,7 +27,7 @@ module.exports = {
 			.setTimestamp()
 			.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
 
-		message.channel.send(exampleEmbed);
+		interaction.channel.send(exampleEmbed);
 
-	}
+	},
 };
